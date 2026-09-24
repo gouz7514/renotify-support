@@ -82,3 +82,11 @@ a { color: var(--accent); }
 hr { border: 0; border-top: 0.5px solid var(--separator); margin: 56px 0; }
 
 footer { color: var(--secondary); font-size: 13px; text-align: center; padding-bottom: 32px; }
+
+/* 좁은 화면: 헤더 항목이 줄바꿈되지 않게 하고, 앵커(#ko, #en)로 이동한 제목이 고정 헤더에 가리지 않게 한다 */
+header .name, header nav a { white-space: nowrap; }
+[id] { scroll-margin-top: 68px; }
+@media (max-width: 480px) {
+  header .name { display: none; }
+  header nav { gap: 14px; font-size: 14px; }
+}
