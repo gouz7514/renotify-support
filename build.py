@@ -2,11 +2,13 @@
 
     python3 build.py [앱 저장소 docs 경로]   # 기본값: ../Renotify/docs
 """
-import re, sys, html
+import re, sys, html, hashlib
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent
 SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else OUT.parent / "Renotify" / "docs"
+# GitHub Pages가 CSS를 최대 10분 캐시하므로, 내용이 바뀌면 주소도 바뀌게 버전을 붙인다.
+CSS_VERSION = hashlib.md5((OUT / "style.css").read_bytes()).hexdigest()[:8]
 
 def inline(t):
     t = html.escape(t, quote=False)
@@ -68,7 +70,7 @@ for md, out, title, desc in PAGES:
 <meta name="description" content="{desc}">
 <link rel="icon" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v={CSS_VERSION}">
 </head>
 <body>
 <header><div class="wrap">
