@@ -1,12 +1,12 @@
-"""앱 저장소의 docs/support.md, docs/privacy.md로 index.html, privacy.html을 만든다.
+"""src/support.md, src/privacy.md로 index.html, privacy.html을 만든다.
 
-    python3 build.py [앱 저장소 docs 경로]   # 기본값: ../Renotify/docs
+    python3 build.py [원문 폴더]   # 기본값: src
 """
 import re, sys, html, hashlib
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent
-SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else OUT.parent / "Renotify" / "docs"
+SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else OUT / "src"
 # GitHub Pages가 CSS를 최대 10분 캐시하므로, 내용이 바뀌면 주소도 바뀌게 버전을 붙인다.
 CSS_VERSION = hashlib.md5((OUT / "style.css").read_bytes()).hexdigest()[:8]
 
