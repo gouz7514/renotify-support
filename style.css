@@ -1,0 +1,84 @@
+/* 알림함(Renotify) 지원 사이트. 앱처럼 애플 기본 앱 톤: 시스템 서체, 그룹 배경 위 흰 카드, 라이트/다크 자동 */
+
+:root {
+  color-scheme: light dark;
+  --bg: #F2F2F7;
+  --card: #FFFFFF;
+  --text: #1C1C1E;
+  --secondary: #6C6C70;
+  --separator: #D1D1D6;
+  --accent: #007AFF;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --card: #1C1C1E;
+    --text: #F2F2F7;
+    --secondary: #98989F;
+    --separator: #38383A;
+    --accent: #0A84FF;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-text-size-adjust: 100%;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.wrap { max-width: 680px; margin: 0 auto; padding: 0 16px; }
+
+header {
+  position: sticky; top: 0; z-index: 1;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid var(--separator);
+}
+header .wrap { display: flex; align-items: center; gap: 10px; min-height: 52px; }
+header img { width: 28px; height: 28px; border-radius: 7px; }
+header .name { font-weight: 600; font-size: 17px; }
+header nav { margin-left: auto; display: flex; gap: 16px; font-size: 15px; }
+header nav a { color: var(--accent); text-decoration: none; }
+header nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
+
+main { padding: 28px 0 56px; }
+
+.lang { font-size: 14px; color: var(--secondary); margin: 0 0 24px; }
+.lang a { color: var(--accent); text-decoration: none; }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; letter-spacing: -0.01em; }
+h2 {
+  font-size: 13px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em;
+  color: var(--secondary); margin: 32px 16px 6px;
+}
+h3 { font-size: 17px; margin: 0 0 4px; }
+
+.lead { font-size: 17px; font-weight: 600; margin: 0 0 6px; }
+.meta { color: var(--secondary); font-size: 14px; margin: 0 0 8px; }
+
+section.card, .card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.card + .card { margin-top: 10px; }
+.card p { margin: 0; }
+.card p + p, .card p + ul, .card ul + p { margin-top: 8px; }
+.card ul { margin: 0; padding-left: 20px; }
+.card li + li { margin-top: 4px; }
+
+.intro p { margin: 0 0 4px; }
+
+a { color: var(--accent); }
+
+hr { border: 0; border-top: 0.5px solid var(--separator); margin: 56px 0; }
+
+footer { color: var(--secondary); font-size: 13px; text-align: center; padding-bottom: 32px; }
