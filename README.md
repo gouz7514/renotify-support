@@ -18,6 +18,7 @@ GitHub Pages로 배포되며, `main`에 푸시하면 몇 분 안에 반영된다
 | `build.py` | md → HTML 변환 |
 | `links.json` | 언어별 단축어 iCloud ID. 앱(`ShortcutLink`)이 읽는다 |
 | `shortcut/ko/`, `shortcut/en/` | 앱 밖에서 공유하는 단축어 열기 페이지 |
+| `guide/ko/1~5.webp`, `guide/en/1~5.webp` | 앱 설정의 자동화 가이드 이미지. 앱(`SetupScreen`)이 읽는다 |
 
 지원·처리방침 페이지에는 JS가 없다. 원문은 이 저장소의 `src/support.md`, `src/privacy.md`이고, HTML은 `build.py`로 만든다.
 
@@ -34,3 +35,13 @@ python3 build.py
 ## 단축어를 다시 공유했을 때
 
 `links.json`의 iCloud ID를 바꿔 푸시한다. 앱 업데이트는 필요 없다. 앱의 `ShortcutLink.fallbackIDs`도 같은 값으로 맞춰 둔다.
+
+## 가이드 이미지를 바꿀 때
+
+같은 파일 이름으로 덮어써 푸시하면 앱 업데이트 없이 바뀐다. 폭 900px WebP로 맞춘다.
+
+```sh
+cwebp -q 80 -resize 900 0 원본.png -o guide/ko/1.webp
+```
+
+이미지 개수나 각 단계의 설명 문구는 앱에 들어 있으므로, 단계 자체가 바뀌면 앱도 고쳐야 한다.
