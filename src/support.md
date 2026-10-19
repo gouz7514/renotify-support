@@ -4,6 +4,13 @@
 
 단축어 자동화로 받은 알림을 iPhone에 보관하고, 날짜·앱·내용으로 다시 찾아볼 수 있어요.
 
+## 중요
+
+### 일부 알림을 확인할 수 없어요
+알림함은 iOS의 단축어 자동화가 실행될 때 알림을 저장해요. 그러나 iOS는 모든 알림에 대해 자동화의 실행을 보장하지 않아서, 자동화가 실행되지 않은 알림은 알림함에 기록되지 않아요.
+
+알림함 앱에서 고칠 수 없는 iOS의 제한이니 참고해 주세요. 알림이 하나도 기록되지 않는다면 아래 **알림이 기록되지 않아요**를 확인해 주세요.
+
 ## 자주 묻는 질문
 
 ### iOS 몇 버전부터 쓸 수 있나요?
@@ -61,6 +68,13 @@ iPhone · iOS 27.0 이상
 **See your past notifications again**
 
 Renotify keeps the notifications you receive on your iPhone through a Shortcuts automation, so you can find them again by date, app, or content.
+
+## Important
+
+### Some notifications are missing
+Renotify saves a notification when the iOS Shortcuts automation runs. However, iOS doesn't guarantee that the automation runs for every notification, so notifications for which the automation didn't run aren't saved in Renotify.
+
+Please note that this is an iOS limitation that Renotify can't fix. If no notifications are being saved at all, see **My notifications aren't being saved** below.
 
 ## FAQ
 
