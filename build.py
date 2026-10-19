@@ -9,6 +9,8 @@ OUT = Path(__file__).resolve().parent
 SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else OUT / "src"
 # GitHub Pages가 CSS를 최대 10분 캐시하므로, 내용이 바뀌면 주소도 바뀌게 버전을 붙인다.
 CSS_VERSION = hashlib.md5((OUT / "style.css").read_bytes()).hexdigest()[:8]
+# 이 섹션의 카드는 노란 배경으로 강조한다.
+NOTICE_SECTIONS = {"중요", "Important"}
 
 def inline(t):
     t = html.escape(t, quote=False)
@@ -43,13 +45,14 @@ def render(part, anchor):
             h.append(f'<div class="intro">{blocks(c)}</div>')
     for s in secs:
         title, body = s.split("\n", 1)
+        card = "card notice" if title.strip() in NOTICE_SECTIONS else "card"
         h.append(f"<h2>{inline(title)}</h2>")
         subs = re.split(r"^### ", body.strip(), flags=re.M)
         if subs[0].strip():
-            h.append(f'<div class="card">{blocks(subs[0])}</div>')
+            h.append(f'<div class="{card}">{blocks(subs[0])}</div>')
         for q in subs[1:]:
             qt, qb = q.split("\n", 1)
-            h.append(f'<div class="card"><h3>{inline(qt)}</h3>{blocks(qb)}</div>')
+            h.append(f'<div class="{card}"><h3>{inline(qt)}</h3>{blocks(qb)}</div>')
     return "\n".join(h)
 
 PAGES = [
